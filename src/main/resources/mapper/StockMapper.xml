@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tsxygfy.seckill.mapper.StockMapper">
+    <select id="checkStock" resultType="cn.tsxygfy.seckill.entity.Stock">
+        select  * from stock where id = #{id}
+    </select>
+    <update id="updateSold" parameterType="cn.tsxygfy.seckill.entity.Stock">
+        update stock set sold=#{sold} where id = #{id}
+    </update>
+<!--    乐观锁-->
+    <update id="updateSold1" parameterType="cn.tsxygfy.seckill.entity.Stock">
+        update stock set
+            sold=sold+1 ,
+            version=version+1
+        where
+            id = #{id}
+            and
+            version = #{version}
+    </update>
+</mapper>

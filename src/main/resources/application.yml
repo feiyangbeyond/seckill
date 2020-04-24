@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /ms
+
+mybatis:
+  type-aliases-package: cn.tsxygfy.seckill.entity
+  mapper-locations: classpath:mapper/*.xml
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/seckill
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+logging:
+  level:
+    root: info
+    cn.tsxygfy.seckill.mapper: debug
